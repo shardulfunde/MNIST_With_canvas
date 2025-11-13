@@ -12,7 +12,7 @@ INVERT_COLORS = False
 
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model("Handwritten_digit.keras")
+    return tf.keras.models.load_model("mnist.keras")
 model = load_model()
 
 st.title("Handwritten Digit Recognition")
@@ -23,7 +23,7 @@ canvas = st_canvas(
     fill_color="rgba(0,0,0,0)",
     stroke_color="white",
     background_color="black",
-    stroke_width=14,
+    stroke_width=15,
     width=280, height=280,
     drawing_mode="freedraw",
     key="canvas",
