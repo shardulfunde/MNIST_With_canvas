@@ -30,7 +30,7 @@ and digit structures.
 
 st.write("Draw a digit, then click Predict.")
 
-col3,col4 = st.columns(2)
+col3,col4= st.columns(2)
 with col3:
     canvas = st_canvas(
         fill_color="rgba(0,0,0,0)",
@@ -102,9 +102,11 @@ if predict_clicked and canvas.image_data is not None:
             probs = model.predict(x, verbose=0)           
             pred = int(probs.argmax(axis=1)[0])
             conf = float(probs.max(axis=1)[0])
+            st.image("https://preview.redd.it/f38s9699la061.gif?width=808&auto=webp&s=5d9dc27213eb97027ab40be5ad0398de1cebeef6",caption="Catched",width=150)
 
-            
-            st.markdown(f"**Prediction:** {pred}  |  **Confidence:** {conf:.3f}")
+           
+        st.subheader(f"**Prediction:** {pred}  |  **Confidence:** {conf:.3f}")
+        
 
 
         def make_feature_model_up_to_conv(model, conv_index=0):
@@ -121,7 +123,8 @@ if predict_clicked and canvas.image_data is not None:
                     conv_count += 1
             raise ValueError("Requested Conv2D layer not found")
 
-        
+        st.subheader("Dive into the rabbit hole of feature maps below")
+        st.image("https://i.pinimg.com/originals/2d/f5/6a/2df56a733f2a2d957431a4a148f79b1e.gif",caption="Down the rabbit hole",use_container_width=True)
         feature_model_0 = make_feature_model_up_to_conv(model, conv_index=0)
         activations = feature_model_0.predict(x)
         
@@ -149,4 +152,4 @@ if predict_clicked and canvas.image_data is not None:
         st.write("Second Conv2D layer output which contains 64 feature maps")
         st.image(imgs, caption=[f"Feature Map {i+1}" for i in range(64)], width=128)
         
-st.write("StudyMate WCE")               
+st.write("Made By Shardul Funde")               
